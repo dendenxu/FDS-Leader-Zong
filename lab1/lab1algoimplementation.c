@@ -17,15 +17,15 @@ double PowRecursive(double x, int n);
 double PowIterative(double x, int n);
 // Before the test, it's the implementer's assumption that the Recursive and Iterative ones' complexity is O(log n)
 // The classic algorithm's complexity is O(n)
-// While the Iterative one's constant may be smaller
+// While the Iterative one's memory consumption may be smaller
 
-int main()
-{
-    printf("%f\n", PowClassic(1.0001, 1000000));
-    printf("%f\n", PowRecursive(1.0001, 1000000));
-    printf("%f\n", PowIterative(1.0001, 1000000));
-    return 0;
-}
+// int main()
+// {
+//     printf("%f\n", PowClassic(1.0001, 1000000));
+//     printf("%f\n", PowRecursive(1.0001, 1000000));
+//     printf("%f\n", PowIterative(1.0001, 1000000));
+//     return 0;
+// }
 
 double PowClassic(double x, int n)
 {
@@ -52,7 +52,7 @@ double PowRecursive(double x, int n)
     if (n % 2) {
         // Avoiding statement like:
         // return PowRecursive(x, n/2) * PowRecursive(x, n/2) * x
-        // It recursives twice as much
+        // It recurs twice as much
         double re = PowRecursive(x, n / 2);
         return re * re * x;
     } else {
