@@ -8,10 +8,11 @@ static clock_t ticks[8];
 static double result;
 //the iteration times of a single alog func. Bigger the magnitude, higher the accuracy but also time consumption.
 static int iternum[3] = {
-    1000,
-    100000,
-    100000,
+    10000,
+    1000000,
+    1000000,
 };
+#define testBase 1.0001
 
 FILE *fp;
 
@@ -39,7 +40,7 @@ int main() {
     for (int i = 0; i < 8; i++) {
         start = clock();
         for (int j = 0; j < iternum[0]; j++)
-            result = PowClassic(1.0001, aryN[i]);
+            result = PowClassic(testBase, aryN[i]);
         stop = clock();
         printf("%g\n", result);
         ticks[i] = stop - start;
@@ -49,7 +50,7 @@ int main() {
     for (int i = 0; i < 8; i++) {
         start = clock();
         for (int j = 0; j < iternum[1]; j++)
-            result = PowRecursive(1.0001, aryN[i]);
+            result = PowRecursive(testBase, aryN[i]);
         stop = clock();
         printf("%g\n", result);
         ticks[i] = stop - start;
@@ -59,7 +60,7 @@ int main() {
     for (int i = 0; i < 8; i++) {
         start = clock();
         for (int j = 0; j < iternum[2]; j++)
-            result = PowIterative(1.0001, aryN[i]);
+            result = PowIterative(testBase, aryN[i]);
         stop = clock();
         printf("%g\n", result);
         ticks[i] = stop - start;
@@ -81,6 +82,7 @@ void printResult(int mark) {
         case 2: fprintf(fp, " |\n| Recursive | Ticks"); break;
         case 3: fprintf(fp, " |\n| Iterative | Ticks"); break;
     }
+
 
     for (int i = 0; i < 8; i++) {
         fprintf(fp, " | %lu", ticks[i]); //clock_t is actually unsigned long
