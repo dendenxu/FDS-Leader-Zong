@@ -6,17 +6,20 @@
 static clock_t start, stop;
 static clock_t ticks[8];
 static double result;
-//the iteration times of a single alog func. Bigger the magnitude, higher the accuracy but also time consumption.
+//the iteration times of a single alog func.
+//Bigger the magnitude, higher the accuracy but also time consumption.
 static int iternum[3] = {
-    10000,
+    1000,
     1000000,
     1000000,
 };
-#define testBase 1.0001
+#define testBase 1.0001  //def the datum used in the test
 
-FILE *fp;
+FILE *fp;  //set a file pointer for the .md file
+double (*pFunc[3])(double, int) = {PowClassic, PowRecursive, PowIterative};
 
-void printResult(int mark);
+
+void printResult(int mark);  //init the function to output the result to .md
 
 int main() {
     int aryN[8] = {
@@ -29,44 +32,25 @@ int main() {
         80000,
         100000,
     };
-    fp = fopen("/Users/futuretech6/Documents/大二上/数结/HW/Project1/Prog/testResult.md", "w");
-
-    fprintf(fp, "| | N |");
-    for (int i = 0; i < 8; i++) fprintf(fp, " %d |", aryN[i]);
-    fprintf(fp, "\n|");
-    for (int i = 0; i < 10; i++) fprintf(fp, " :--: |");
+    fp = fopen("./testResult.md", "w");  //set the relative path and the file mode in "w" so that the old data can be deleted
+    fprintf(fp, "| | N |");  //print the title of the table
+    for (int i = 0; i < 8; i++) fprintf(fp, " %d |", aryN[i]);  //print the magnitude of the exponent
+    fprintf(fp, "\n|");  //print the title of the table
+    for (int i = 0; i < 10; i++) fprintf(fp, " :--: |");  //set the table to align center
     fprintf(fp, "\n");
 
-    for (int i = 0; i < 8; i++) {
-        start = clock();
-        for (int j = 0; j < iternum[0]; j++)
-            result = PowClassic(testBase, aryN[i]);
-        stop = clock();
-        printf("%g\n", result);
-        ticks[i] = stop - start;
+    for (int loopFunc = 0; loopFunc < 3; loopFunc++) {  //loop foe 3 times to test the 3 algorithms
+        for (int i = 0; i < 8; i++) {
+            start = clock();  //start keep the time
+            for (int j = 0; j < iternum[0] - 1; j++)  //iterate iternum[0]-1 times to increase accuracy
+                result = pFunc[loopFunc](testBase, aryN[i]);
+            result = pFunc[loopFunc](testBase, aryN[i]);  //run 1 time to get the result so that the time used to keep the data can be saved.
+            stop = clock();  //stop keep the time
+            printf("%g\n", result);  //print the result to the command line
+            ticks[i] = stop - start;  //keep the tick
+        }
+        printResult(loopFunc + 1); //give a index to func printResult(int) so that it can make the table more detailed
     }
-    printResult(1);
-
-    for (int i = 0; i < 8; i++) {
-        start = clock();
-        for (int j = 0; j < iternum[1]; j++)
-            result = PowRecursive(testBase, aryN[i]);
-        stop = clock();
-        printf("%g\n", result);
-        ticks[i] = stop - start;
-    }
-    printResult(2);
-
-    for (int i = 0; i < 8; i++) {
-        start = clock();
-        for (int j = 0; j < iternum[2]; j++)
-            result = PowIterative(testBase, aryN[i]);
-        stop = clock();
-        printf("%g\n", result);
-        ticks[i] = stop - start;
-    }
-    printResult(3);
-
     fclose(fp);
     return 0;
 }
