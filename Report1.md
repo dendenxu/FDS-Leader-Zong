@@ -255,15 +255,14 @@ We test our result under different compilation environment.
 
 First of all, from the result(Duration) we get, we can evaluate the complexity of the three Algorithms. Under VIsualStudioDebugx64 condition, for example, We can see that as N grow in multiples, the duration of Algorithm 1 increase in linear while Algorithm 2 and Algorithm 3 in logarithmic growth. The function images in Figure 4.1 show the growth trends of each Algorithm.（Note: Algorithm 1's time unit is 10<sup>2</sup> ns)
 
-![1568964617879](C:\Users\宗威旭\Desktop\1568964617879.png)
+![1568964617879](debugx64VisualStudio.png)
 
 <center>figure 4.1</center>
 Then,from the image above, we can compare the result between different Algorithm. It's obvious that as N become big enough, it takes a long time for Algorithm 1 to compute the result of X<sup>N</sup>. Compare with Algorithm 1, Algorithm 2 and Algorithm 3 seems to grow in much slower trends. As we assume, we can see that the Algorithm 3 is more efficient than the other two Algorithms. We assume that Algorithm 3 is faster than 2 as it consume less space and time. However, during our test, we find that the condition different when we run the function under clangDebugx64 condition.(show in figure 4.2)
 
-![1568965977366](C:\Users\宗威旭\AppData\Roaming\Typora\typora-user-images\1568965977366.png)
+![1568965977366](Debugx64_clang.png)
 
 <center>figure 4.2</center>
-
 We can see that if we use clang to compile, the advantage of Algorithm 3 is not so obvious. In other words, it sometimes even slower than Algorithm 2. We can't make out the exact reason of this. We assume that maybe clang do some optimization when it do recursion. 
 
 And obviously, the duration we get from test varies with the compiler environment we use. For example, under the debug mode, gcc performs faster than the other compilers.
