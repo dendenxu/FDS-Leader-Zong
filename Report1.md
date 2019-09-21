@@ -120,11 +120,11 @@ To confirms our hypothesis' validity, we can use **clock** to record the ticks w
 ```c
 static clock_t start, stop;
 static clock_t ticks[8];
-int iternum[3] = {10000, 1000000, 1000000};
-int aryN[8] = {1000, ... ,100000}:
+static int iternum[3] = {10000, 1000000, 1000000};
+static int aryN[8] = {1000, ... ,100000}:
 ```
 
-We use the array **aryN** to save the N we test. **Iternum** save the K times we run the function. And **ticks** save the time during we run the function for K times.
+We use the array **aryN** to save the N we use to test. **Iternum** save the K times we run the function. And **ticks** save the time during we run the function for K times.
 
 Then, we can run the three function and save the ticks when we run the function for K times. After that, we define function ***printResult*** to print the time for function. (Mark represent the index of each function.) We export the result as markdown files. The detail about ***printResult*** is omitted.
 
