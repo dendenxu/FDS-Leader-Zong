@@ -39,11 +39,11 @@ int main() {
     for (int i = 0; i < 10; i++) fprintf(fp, " :--: |");  //set the table to align center
     fprintf(fp, "\n");
 
-    for (int loopFunc = 0; loopFunc < 3; loopFunc++) {  //loop foe 3 times to test the 3 algorithms
+    for (int loopFunc = 0; loopFunc < 3; loopFunc++) {  //loop for 3 times to test the 3 algorithms
         for (int i = 0; i < 8; i++) {
             start = clock();  //start keep the time
-            for (int j = 0; j < iternum[loopFunc] - 1; j++)  //iterate iternum[0]-1 times to increase accuracy
-                result = pFunc[loopFunc](testBase, aryN[i]);
+            for (int j = 0; j < iternum[loopFunc] - 1; j++)  //increase accuracy by eliminating the time used in result assignment
+                pFunc[loopFunc](testBase, aryN[i]);  //pFunc[] is an array of function pointer
             result = pFunc[loopFunc](testBase, aryN[i]);  //run 1 time to get the result so that the time used to keep the data can be saved.
             stop = clock();  //stop keep the time
             printf("%g\n", result);  //print the result to the command line
