@@ -325,10 +325,3 @@ Then a markdown builder can turn the <b>.md</b> file into a beautified table and
 We hereby declare that all the work done in this project titled "The project report of experiment 1" is of our independent effort as a group.
 
 
-
-
-## Duty Assignments
-
-Programmer: <u>Xu Zhen 3180105504</u>
-Tester: <u>Chen Xiyao 3180103012</u>
-Report Writer: <u>Zong Weixu 3180102776</u>
