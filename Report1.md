@@ -294,6 +294,31 @@ And obviously, the duration we get from test varies with the compiler environmen
 
 
 
+## Improvement
+
+We use features in markdown to print out table automatically so as to make high magnitude of TEST possible. For example, we can print out the result under certain compilation enviroment in format as follow: 
+
+```markdown
+| | N | 1000 | 5000 | 10000 | 20000 | 40000 | 60000 | 80000 | 100000 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| Algorithm1 | Iterations(K) | 1000 | 1000 | 1000 | 1000 | 1000 | 1000 | 1000 | 1000 |
+| Classic | Ticks | 4219 | 14796 | 29018 | 58639 | 112193 | 170814 | 218157 | 265822 |
+| | Total Times(ms) | 4.219 | 14.796 | 29.018 | 58.639 | 112.193 | 170.814 | 218.157 | 265.822 |
+| | Duration(ns) | 4219 | 14796 | 29018 | 58639 | 112193 | 170814 | 218157 | 265822 |
+| Algorithm2 | Iterations(K) | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 |
+| Recursive | Ticks | 93505 | 129289 | 152644 | 171364 | 189981 | 174747 | 182554 | 179645 |
+| | Total Times(ms) | 93.505 | 129.289 | 152.644 | 171.364 | 189.981 | 174.747 | 182.554 | 179.645 |
+| | Duration(ns) | 93.505 | 129.289 | 152.644 | 171.364 | 189.981 | 174.747 | 182.554 | 179.645 |
+| Algorithm3 | Iterations(K) | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 | 1000000 |
+| Iterative | Ticks | 105405 | 138466 | 149387 | 162006 | 171425 | 171617 | 181395 | 183903 |
+| | Total Times(ms) | 105.405 | 138.466 | 149.387 | 162.006 | 171.425 | 171.617 | 181.395 | 183.903 |
+| | Duration(ns) | 105.405 | 138.466 | 149.387 | 162.006 | 171.425 | 171.617 | 181.395 | 183.903 |
+```
+
+Then a markdown builder can turn the <b>.md</b> file into a beautified table and make the result easier to read an compare.
+
+
+
 
 ## Declaration
 
