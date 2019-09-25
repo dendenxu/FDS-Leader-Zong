@@ -15,6 +15,7 @@
 double PowClassic(double x, int n);
 double PowRecursive(double x, int n);
 double PowIterative(double x, int n);
+double PowIterativeBetter(double x, int n);
 // Before the test, it's the implementer's assumption that the Recursive and Iterative ones' complexity is O(log n)
 // The classic algorithm's complexity is O(n)
 // While the Iterative one's memory consumption may be smaller
@@ -85,4 +86,21 @@ double PowIterative(double x, int n)
     }
     return result;
     // No need to explicitly give n=0 or n=1 some code.
+}
+
+// IMPROVEMENT: A better iterative power funciton:
+// In the newer test source file, we used this new method.
+double PowIterativeBetter(double x, int n)
+{
+    // The older form of the funciton uses stack to implement a recursive-like fast-power function
+    // After careful consideration, the programmer found a better way to fulfill the task.
+    double ans = 1;
+    while (n) {
+        if (n % 2) {
+            ans *= x;
+        }
+        x *= x;
+        n /= 2;
+    }
+    return ans;
 }
