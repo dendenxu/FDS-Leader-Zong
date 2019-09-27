@@ -15,7 +15,8 @@
 <center ><b><font size = '6'>The Project Report of Experiment 1</font></b><center>
 
 
-<center> Author Name: <u>XXX</u><center> 
+<center> Author Name: <u>Zong Wei Xu</u><center> 
+
 
 <center> Date: <u>2019 - 09 - 17 </u><center>
 
@@ -353,4 +354,13 @@ We can see that the Algorithm4 performs better than other Algorithm. And the com
 
 We hereby declare that all the work done in this project titled "The project report of experiment 1" is of our independent effort as a group.
 
+
+
+## Duty Assignment
+
+programmer: Xu Zhen 3180105504
+
+Tester: Chen Xiyao 3180103012
+
+Report Writer: Zong Weixu 3180102776
 
